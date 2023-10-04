@@ -132,6 +132,14 @@
       "headingKeywords": {}
     },
     {
+      "src": "team/chew01.md",
+      "title": "Jun Heng's Project Portfolio Page",
+      "headings": {
+        "project-freelancebuddy": "Project: FreelanceBuddy"
+      },
+      "headingKeywords": {}
+    },
+    {
       "src": "team/johndoe.md",
       "title": "John Doe's Project Portfolio Page",
       "headings": {
