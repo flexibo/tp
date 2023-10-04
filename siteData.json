@@ -148,6 +148,14 @@
       "headingKeywords": {}
     },
     {
+      "src": "team/sushiyade.md",
+      "title": "Ito Tetsushi's Project Portfolio Page",
+      "headings": {
+        "project-freelancebuddy": "Project: FreelanceBuddy"
+      },
+      "headingKeywords": {}
+    },
+    {
       "src": "tutorials/AddRemark.md",
       "title": "Tutorial: Adding a command",
       "headings": {
