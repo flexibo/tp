@@ -15,7 +15,6 @@ import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.contacts.AddCommand;
 import seedu.address.logic.commands.contacts.DeleteCommand;
 import seedu.address.logic.commands.contacts.EditCommand;
-
 import seedu.address.logic.commands.contacts.FindCommand;
 import seedu.address.logic.commands.contacts.ListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
