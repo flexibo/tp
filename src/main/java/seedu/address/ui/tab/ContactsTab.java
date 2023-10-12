@@ -49,11 +49,17 @@ public class ContactsTab extends UiPart<Region> {
         helpWindow = new HelpWindow();
     }
 
+    /**
+     * Setup content within Contacts Tab with given {@code Logic}
+     */
     public void setup(Logic logic) {
         this.logic = logic;
         setInnerParts();
     }
 
+    /**
+     * Fills up all the placeholders of this tab.
+     */
     private void setInnerParts() {
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
