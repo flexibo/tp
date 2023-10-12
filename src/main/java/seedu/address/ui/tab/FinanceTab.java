@@ -54,6 +54,7 @@ public class FinanceTab extends UiPart<Region> {
      */
     public void setup(Logic logic) {
         this.logic = logic;
+        helpWindow = new HelpWindow();
         setInnerParts();
     }
 
