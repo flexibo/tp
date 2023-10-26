@@ -1,9 +1,12 @@
 package seedu.address.ui;
 
+import java.io.IOException;
 import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -54,6 +57,9 @@ public class MainWindow2 extends UiPart<Stage> {
 
     @FXML
     private Tab financeTabPlaceholder;
+
+    @FXML
+    private Tab calendarTabPlaceholder;
 
 
     /**
@@ -130,6 +136,13 @@ public class MainWindow2 extends UiPart<Stage> {
         Logic financeParser = logic.setNewParser(new FinanceParser());
         financeTab.setup(financeParser);
         financeTabPlaceholder.setContent(financeTab.getRoot());
+
+        FXMLLoader fxmlLoader = new FXMLLoader(MainWindow2.class.getResource("/view/Calendar.fxml"));
+        try {
+            calendarTabPlaceholder.setContent(fxmlLoader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
