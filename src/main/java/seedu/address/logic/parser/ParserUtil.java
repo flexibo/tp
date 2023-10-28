@@ -2,7 +2,6 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
@@ -14,10 +13,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.event.EventDescription;
 import seedu.address.model.event.EventName;
 import seedu.address.model.event.Location;
-import seedu.address.model.event.TimeEnd;
-import seedu.address.model.event.TimeStart;
 import seedu.address.model.finance.Amount;
-import seedu.address.model.finance.ClientName;
 import seedu.address.model.finance.Description;
 import seedu.address.model.finance.FinanceListType;
 import seedu.address.model.person.Address;
@@ -164,36 +160,6 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String timeStart} into a {@code TimeStart}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code timeStart} is invalid.
-     */
-    public static TimeStart parseTimeStart(String timeStart) throws ParseException {
-        String trimmedTimeStart = timeStart.trim();
-        if (!TimeStart.isValidTime(trimmedTimeStart)) {
-            throw new ParseException(TimeStart.MESSAGE_CONSTRAINTS);
-        }
-        LocalDateTime dateTime = LocalDateTime.parse(trimmedTimeStart, TimeStart.DATE_TIME_FORMATTER);
-        return new TimeStart(dateTime);
-    }
-
-    /**
-     * Parses a {@code String timeEnd} into a {@code TimeEnd}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code timeEnd} is invalid.
-     */
-    public static TimeEnd parseTimeEnd(String timeEnd) throws ParseException {
-        String trimmedTimeEnd = timeEnd.trim();
-        if (!TimeEnd.isValidTime(trimmedTimeEnd)) {
-            throw new ParseException(TimeEnd.MESSAGE_CONSTRAINTS);
-        }
-        LocalDateTime dateTime = LocalDateTime.parse(trimmedTimeEnd, TimeEnd.DATE_TIME_FORMATTER);
-        return new TimeEnd(dateTime);
-    }
-
-    /**
      * Parses a {@code String location} into a {@code Location}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -277,22 +243,7 @@ public class ParserUtil {
         if (!Amount.isValidAmount(trimmedAmount)) {
             throw new ParseException(Amount.MESSAGE_CONSTRAINTS);
         }
-        return new Amount("$" + trimmedAmount);
-    }
-
-    /**
-     * Parses a {@code String name} into a {@code Name}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code name} is invalid.
-     */
-    public static ClientName parseClientName(String clientName) throws ParseException {
-        requireNonNull(clientName);
-        String trimmedName = clientName.trim();
-        if (!Name.isValidName(trimmedName)) {
-            throw new ParseException(ClientName.MESSAGE_CONSTRAINTS);
-        }
-        return new ClientName(trimmedName);
+        return new Amount(trimmedAmount);
     }
 
     /**

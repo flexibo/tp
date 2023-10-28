@@ -1,6 +1,8 @@
 package seedu.address.model.util;
 
 
+import java.time.LocalDateTime;
+
 import seedu.address.model.AddressBook;
 import seedu.address.model.EventsBook;
 import seedu.address.model.FinancesBook;
@@ -8,13 +10,12 @@ import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyEventsBook;
 import seedu.address.model.ReadOnlyFinancesBook;
 import seedu.address.model.event.Event;
-import seedu.address.model.event.exceptions.TimeStartAfterTimeEndException;
 import seedu.address.model.finance.Amount;
-import seedu.address.model.finance.ClientName;
 import seedu.address.model.finance.Commission;
 import seedu.address.model.finance.Description;
 import seedu.address.model.finance.Expense;
 import seedu.address.model.finance.Finance;
+import seedu.address.model.finance.TimeDue;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Company;
 import seedu.address.model.person.Email;
@@ -50,36 +51,73 @@ public class SampleDataUtil {
     }
 
     public static Event[] getSampleEvents() {
-        try {
-            return new Event[] {
-                    new EventBuilder().withName("Meeting with Alice")
-                            .withTimeStart("23-09-2023 09:00")
-                            .withTimeEnd("23-09-2023 10:00")
-                            .build(),
-                    new EventBuilder().withName("Conference with Bob")
-                            .withTimeStart("24-09-2023 14:00")
-                            .withTimeEnd("24-09-2023 18:00")
-                            .build(),
-                    new EventBuilder().withName("Team Lunch")
-                            .withTimeStart("25-09-2023 12:00")
-                            .withTimeEnd("25-09-2023 13:00")
-                            .build(),
-                    new EventBuilder().withName("Project Presentation")
-                            .withTimeStart("26-09-2023 15:00")
-                            .withTimeEnd("26-09-2023 16:30")
-                            .build()
-            };
-        } catch (TimeStartAfterTimeEndException e) {
-            throw new RuntimeException(e);
-        }
+        return new Event[] {
+            new EventBuilder().withName("Meeting with Alice")
+                    .withTimeStart("23-09-2023 09:00")
+                    .withTimeEnd("23-09-2023 10:00")
+                    .build(),
+            new EventBuilder().withName("Conference with Bob")
+                    .withTimeStart("24-09-2023 14:00")
+                    .withTimeEnd("24-09-2023 18:00")
+                    .build(),
+            new EventBuilder().withName("Team Lunch")
+                    .withTimeStart("25-09-2023 12:00")
+                    .withTimeEnd("25-09-2023 13:00")
+                    .build(),
+            new EventBuilder().withName("Project Presentation")
+                    .withTimeStart("26-09-2023 15:00")
+                    .withTimeEnd("26-09-2023 16:30")
+                    .build()
+        };
     }
 
     public static Finance[] getSampleFinances() {
         return new Finance[] {
-            new Commission(new Amount("200"), new ClientName("Bob"), new Description("WOOOO FREE MONEY")),
-            new Commission(new Amount("200"), new ClientName("Alice"), new Description("")),
-            new Expense(new Amount("12"), new ClientName("Mackers"), new Description("fries")),
-            new Expense(new Amount("4.50"), new ClientName("NTUC"), new Description("buy bread"))
+            new Commission(
+                    new Amount("300"),
+                    new Person(
+                            new Name("Bob"),
+                            new Phone("00000"),
+                            new Email("filler@email.com"),
+                            new Address(""),
+                            new Company(""),
+                            new TelegramName("")
+                    ),
+                    new Description("Artwork"),
+                    new TimeDue(LocalDateTime.now())
+            ),
+            new Commission(
+                    new Amount("100"),
+                    new Person(
+                            new Name("Alice"),
+                            new Phone("00000"),
+                            new Email("filler@email.com"),
+                            new Address(""),
+                            new Company(""),
+                            new TelegramName("")
+                    ),
+                    new Description(""),
+                    new TimeDue(LocalDateTime.now())
+            ),
+            new Expense(
+                    new Amount("1200"),
+                    new Person(
+                            new Name("Adobe"),
+                            new Phone("00000"),
+                            new Email("filler@email.com"),
+                            new Address(""),
+                            new Company(""),
+                            new TelegramName("")
+                    ),
+                    new Description("License"),
+                    new TimeDue(LocalDateTime.now())
+            ),
+            new Expense(
+                    new Amount("500"),
+                    null,
+                    new Description("Party"),
+                    new TimeDue(LocalDateTime.now())
+            )
         };
     }
 

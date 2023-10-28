@@ -71,7 +71,9 @@ The **API** of this component is specified in [`Ui.java`](https://github.com/se-
 
 <puml src="diagrams/UiClassDiagram.puml" alt="Structure of the UI Component"/>
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `ContactsTab`, `FinanceTab`, `EventsTab`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
+
+Depending on the Tab currently selected by the user, the `MainWindow` will display the corresponding `PersonListPanel`, `FinanceListPanel` or `EventListPanel`.
 
 The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
 
@@ -86,24 +88,26 @@ The `UI` component,
 
 **API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
 
-Here's a (partial) class diagram of the `Logic` component:
+Here's a (partial) class diagram of the `Logic` component within a Tab:
 
 <puml src="diagrams/LogicClassDiagram.puml" width="550"/>
 
-The sequence diagram below illustrates the interactions within the `Logic` component, taking `execute("delete 1")` API call as an example.
+The sequence diagram below illustrates the interactions within the `Logic` component, taking `execute("delete 1")` API call as an example.</br>
+**Note:** This takes place within the ContactsTab. 
 
 <puml src="diagrams/DeleteSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `delete 1` Command" />
 
 <box type="info" seamless>
 
-**Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+**Note:** The lifeline for `DeleteContactCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </box>
 
 How the `Logic` component works:
-
-1. When `Logic` is called upon to execute a command, it is passed to an `AddressBookParser` object which in turn creates a parser that matches the command (e.g., `DeleteCommandParser`) and uses it to parse the command.
-1. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `DeleteCommand`) which is executed by the `LogicManager`.
-1. The command can communicate with the `Model` when it is executed (e.g. to delete a person).
+1. All three tabs have their own `Logic` objects. These `Logic` objects share the same `Model` and `Storage`, but have different `Parsers`
+1. When `Logic` is called upon to execute a command, it is passed to that Tab's `Parser` (e.g. in our class diagram above the `ContactParser` receives the command). 
+1. This parser then creates a parser that matches the command (e.g., `DeleteContactCommandParser`) and uses it to parse the command.
+1. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `DeleteContactCommand`) which is executed by the `LogicManager`.
+1. The command can communicate with the `Model` when it is executed (e.g. to delete a contact).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `Logic`.
 
 Here are the other classes in `Logic` (omitted from the class diagram above) that are used for parsing a user command:
@@ -111,27 +115,39 @@ Here are the other classes in `Logic` (omitted from the class diagram above) tha
 <puml src="diagrams/ParserClasses.puml" width="600"/>
 
 How the parsing works:
-* When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `AddressBookParser` returns back as a `Command` object.
-* All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
+* When called upon to parse a user command, the respective Parsers (i.e. `ContactParser`, `FinanceParser`, `EventParser`) class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddContactCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddContactCommand`) which the `ContactParser` returns back as a `Command` object.
+* All `XYZCommandParser` classes (e.g., `AddContactCommandParser`, `DeleteFinanceCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
-**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
+**API** : [`Model.java`](https://github.com/AY2324S1-CS2103T-W09-2/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
-<puml src="diagrams/ModelClassDiagram.puml" width="450" />
+<puml src="diagrams/ModelClassDiagram.puml" width="600" />
 
 
 The `Model` component,
 
-* stores the address book data i.e., all `Person` objects (which are contained in a `UniquePersonList` object).
-* stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+* stores the address book data, event book data and finance book data i.e., all `Person` objects (which are contained in a `UniquePersonList` object).
+* stores the currently 'selected' objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable i.e., `ObservableList<Person>` where `Person` objects can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change. This is the same for `Event` and `Finance`.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
-* does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
+* does not depend on any of the other seven components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
 <box type="info" seamless>
 
-**Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
+**Note:** An alternative (arguably, a more OOP) model is given below.
 
-<puml src="diagrams/BetterModelClassDiagram.puml" width="450" />
+
+**For AddressBook:**
+
+<puml src="diagrams/BetterModelClassDiagramAddressBook.puml" width="450" />
+
+**For EventsBook:** note that multiple `Person` objects are can be associated to an Event as clients
+
+<puml src="diagrams/BetterModelClassDiagramEventsBook.puml" width="450" />
+
+**For FinanceBook:**
+
+<puml src="diagrams/BetterModelClassDiagramFinancesBook.puml" width="450" />
+
 
 </box>
 
@@ -143,8 +159,12 @@ The `Model` component,
 <puml src="diagrams/StorageClassDiagram.puml" width="550" />
 
 The `Storage` component,
-* can save both address book data and user preference data in JSON format, and read them back into corresponding objects.
-* inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
+* can save the following data in JSON format, and read them back into corresponding objects.
+  * address book data
+  * events book data
+  * finance book data
+  * user preference data
+* inherits from `AddressBookStorage`, `EventsBookStorage`, `FinanceBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 
 ### Common classes
@@ -322,21 +342,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 #### For Finance Management
 
-> This covers for both commission and expense. We will refer to both as C/E.
+> This covers both commission and expense. We will refer to both as C/E.
 
-| Priority |     As a …​      | I want to …​                                           | So that I can…​                                   |
-|:--------:|:----------------:|--------------------------------------------------------|---------------------------------------------------|
-| `* * *`  |       user       | add a new C/E                                          |                                                   |
-| `* * *`  |       user       | delete an old C/E                                      | remove entries that I no longer need              |
-| `* * *`  |       user       | view all my saved C/E                                  | have an overview of all my C/E                    |
-|  `* *`   |       user       | see a summary of past months C/E                       | know what I get a summary of my finances          |
-|  `* *`   |       user       | edit a saved C/E                                       | change any details that are wrong or have changed |
-|  `* *`   | experienced user | tag clients to C/E                                     | see which client is involved in a particular C/E  |
-|  `* *`   |       user       | see expected months income                             | plan my finances for the month                    |
-|   `*`    |  organised user  | generate an financial report (for a given time period) | keep track of my monetary flow                    |
-
-
-*{More to be added}*
+| Priority |        As a …​         | I want to …​                                    | So that I can…​                                           |
+|:--------:|:----------------------:|-------------------------------------------------|-----------------------------------------------------------|
+| `* * *`  |          user          | add a new C/E                                   |                                                           |
+| `* * *`  |          user          | delete an old C/E                               | remove entries that I no longer need                      |
+| `* * *`  |          user          | view all my saved C/E                           | have an overview of all my C/E                            |
+|  `* *`   |          user          | filter by type (C/E)                            |                                                           |
+|  `* *`   |          user          | edit a saved C/E                                | change any details that are wrong or have changed         |
+|  `* *`   | user with many clients | tag clients to C/E                              | see which client is involved in a particular C/E          |
+|  `* *`   | user with many clients | filter by tagged client                         |                                                           |
+|  `* *`   | user with many clients | get a summary of total C/E by tagged client     | know how valuable a client is                             |
+|  `* *`   | financially savvy user | add time due for C/E                            | know when to expect cash inflow/outflow                   |
+|  `* *`   | financially savvy user | filter by a given day/month's C/E               |                                                           |
+|  `* *`   | financially savvy user | get a summary of total C/E in a given day/month | get an idea of my financial situation for the time period |
 
 ### Use cases
 
@@ -346,9 +366,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests for help
-2. FreelanceBuddy shows a pop-up with a link to the user guide
-3. User copies the URL and references the user guide
+1. User requests for help.
+2. FreelanceBuddy shows a pop-up with a link to the user guide.
+3. User copies the URL and references the user guide.
 
    Use case ends.
 
@@ -358,21 +378,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. FreelanceBuddy shows the current tab user is on
-2. User requests to switch to another tab (that is not the current one)
-3. FreelanceBuddy switches to the specified tab by the user
-4. FreelanceBuddy shows the desired tab
+1. FreelanceBuddy shows the current tab user is on.
+2. User requests to switch to another tab (that is not the current one).
+3. FreelanceBuddy switches to the specified tab by the user.
+4. FreelanceBuddy shows the desired tab.
 
    Use case ends.
 
 **Extensions**
 
-* 2a. The user inputs an invalid syntax
-    * 2a1. FreelanceBuddy shows an error message
+* 2a. The user inputs an invalid syntax.
+    * 2a1. FreelanceBuddy shows an error message.
 
       Use case resumes at step 1.
   
-* 2b. User decides to stay on the current tab
+* 2b. User decides to stay on the current tab.
 
     User case resumes at step 4.
 
@@ -382,15 +402,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to add a new contact with details
-2. FreelanceBuddy creates a new contact and shows it within the list
+1. User requests to add a new contact with details.
+2. FreelanceBuddy creates a new contact and shows it within the list.
 
    Use case ends.
 
 **Extensions**
   
-* 1a. The user inputs invalid syntax
-    * 1a1. FreelanceBuddy shows an error message
+* 1a. The user inputs invalid syntax.
+    * 1a1. FreelanceBuddy shows an error message.
 
       Use case resumes at step 1. 
   
@@ -401,15 +421,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to delete specific entry in the list
-2. FreelanceBuddy deletes the entry
+1. User requests to delete specific entry in the list.
+2. FreelanceBuddy deletes the entry.
 
    Use case ends.
 
 **Extensions**
 
-* 1a. The user inputs with invalid syntax
-    * 1a1. FreelanceBuddy shows error message
+* 1a. The user inputs with invalid syntax.
+    * 1a1. FreelanceBuddy shows error message.
 
       Use case resumes at step 1. 
 
@@ -419,8 +439,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to view all Contacts
-2. FreelanceBuddy shows a list of all Contacts
+1. User requests to view all Contacts.
+2. FreelanceBuddy shows a list of all Contacts.
 
    Use case ends.
 
@@ -430,15 +450,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to find contacts using keywords
-2. FreelanceBuddy shows a list of Contacts that contains given keywords
+1. User requests to find contacts using keywords.
+2. FreelanceBuddy shows a list of Contacts that contains given keywords.
 
    Use case ends resumes at step 1.
 
 **Extensions** 
 
 * 1a. No contacts found that contains given keywords.
-  * 1a1. FreelanceBuddy shows error message
+  * 1a1. FreelanceBuddy shows error message.
 
     Use case ends.
 
@@ -448,15 +468,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to add a new event
+1. User requests to add a new event.
 2. FreelanceBuddy creates the Event entry and shows it within the list.
 
    Use case ends.
 
 **Extensions**
 
-* 1a. The user inputs an invalid index
-    * 1a1. FreelanceBuddy shows an error message
+* 1a. The user inputs an invalid index.
+    * 1a1. FreelanceBuddy shows an error message.
 
       Use case resumes at step 1.
 
@@ -466,15 +486,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to delete a specific entry in the list
-2. FreelanceBuddy deletes the entry
+1. User requests to delete a specific entry in the list.
+2. FreelanceBuddy deletes the entry.
 
    Use case ends.
 
 **Extensions**
 
-* 1a. The user inputs an invalid index
-    * 1a1. FreelanceBuddy shows an error message
+* 1a. The user inputs an invalid index.
+    * 1a1. FreelanceBuddy shows an error message.
 
       Use case resumes at step 1.
 
@@ -484,8 +504,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to view all events
-2. FreelanceBuddy shows a list of all events
+1. User requests to view all events.
+2. FreelanceBuddy shows a list of all events.
 
 Use case ends.
 
@@ -495,26 +515,26 @@ Use case ends.
 
 **MSS**
 
-1. User requests to view most urgent events
-2. FreelanceBuddy shows a list of most urgent events
+1. User requests to view most urgent events.
+2. FreelanceBuddy shows a list of most urgent events.
 
 Use case ends.
 
-#### Use Case: UC11 - Add a commission
+#### Use Case: UC11 - Add a finance entry
 
 **Precondition**: User is on **Finance** tab
 
 **MSS**
 
-1. User requests to add a new commission
-2. FreelanceBuddy adds the new commission to the top of the list
+1. User requests to add a new finance entry.
+2. FreelanceBuddy adds the new finance entry to the top of the list.
 
     Use case ends.
 
 **Extensions** 
 
-* 1a. The user inputs an invalid syntax
-    * 1a1. FreelanceBuddy shows an error message
+* 1a. The user inputs an invalid syntax.
+    * 1a1. FreelanceBuddy shows an error message.
 
         Use case resumes at step 1.
 
@@ -524,15 +544,15 @@ Use case ends.
 
 **MSS**
 
-1. User requests to delete a specific entry in the list
-2. FreelanceBuddy deletes the entry
+1. User requests to delete a specific entry in the list.
+2. FreelanceBuddy deletes the entry.
 
     Use case ends.
 
 **Extensions**
 
-* 1a. The user inputs an invalid index
-  * 1a1. FreelanceBuddy shows an error message
+* 1a. The user inputs an invalid index.
+  * 1a1. FreelanceBuddy shows an error message.
     
     Use case resumes at step 1.
 
@@ -542,10 +562,123 @@ Use case ends.
 
 **MSS**
 
-1. User requests to view all finance entries
-2. FreelanceBuddy shows a list of all finance entries
+1. User requests to view all finance entries.
+2. FreelanceBuddy shows a list of all finance entries.
 
 Use case ends.
+
+#### Use Case: UC14 - Filter by finance entry type
+
+**Precondition**: User is on **Finance** tab
+
+**MSS**
+
+1. User requests to filter finance entries by entry type.
+2. FreelanceBuddy shows a list of finance entries of the given type.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. The user inputs an invalid entry type.
+    * 1a1. FreelanceBuddy shows an error message.
+
+      Use case resumes at step 1.
+
+#### Use Case: UC15 - Edit a finance entry
+
+**Precondition**: User is on **Finance** tab, **Finance** list must have at least one entry
+
+**MSS**
+
+1. User requests to edit a specific entry in the list.
+2. FreelanceBuddy edits the entry.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. The user inputs an invalid index.
+    * 1a1. FreelanceBuddy shows an error message.
+
+      Use case resumes at step 1.
+
+* 1b. The user inputs an invalid syntax.
+    * 1b1. FreelanceBuddy shows an error message.
+
+      Use case resumes at step 1.
+
+#### Use Case: UC16 - Filter finance entries by client
+
+**Precondition**: User is on **Finance** tab
+
+**MSS**
+
+1. User requests to filter finance entries by client.
+2. FreelanceBuddy shows a list of finance entries tagged to the given client.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. The user inputs a client that does not exist.
+    * 1a1. FreelanceBuddy shows an error message.
+
+      Use case resumes at step 1.
+
+#### Use Case: UC17 - Get finance summary for tagged client
+
+**Precondition**: User is on **Finance** tab
+
+**MSS**
+
+1. User requests to see finance summary for a client.
+2. FreelanceBuddy shows the finance summary for the given client.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. The user inputs a client that does not exist.
+    * 1a1. FreelanceBuddy shows an error message.
+
+      Use case resumes at step 1.
+
+#### Use Case: UC18 - Filter finance entries by day/month
+
+**Precondition**: User is on **Finance** tab
+
+**MSS**
+
+1. User requests to filter finance entries by day/month.
+2. FreelanceBuddy shows a list of finance entries due in the given day/month.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. The user inputs an invalid syntax.
+    * 1a1. FreelanceBuddy shows an error message.
+
+      Use case resumes at step 1.
+
+#### Use Case: UC19 - Get finance summary for day/month
+
+**Precondition**: User is on **Finance** tab
+
+**MSS**
+
+1. User requests to see finance summary for a day/month.
+2. FreelanceBuddy shows the finance summary for the given day/month.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. The user inputs an invalid syntax.
+    * 1a1. FreelanceBuddy shows an error message.
+
+      Use case resumes at step 1.
 
 ### Non-Functional Requirements
 

@@ -3,6 +3,7 @@ package seedu.address.testutil;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_AMOUNT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CLIENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME_DUE;
 
 import seedu.address.logic.commands.finance.AddCommissionCommand;
 import seedu.address.logic.commands.finance.AddExpenseCommand;
@@ -34,9 +35,10 @@ public class FinanceUtil {
      */
     public static String getFinanceDetails(Finance finance) {
         StringBuilder sb = new StringBuilder();
-        sb.append(PREFIX_AMOUNT + finance.getAmount().value.substring(1) + " ");
-        sb.append(PREFIX_CLIENT + finance.getClient().fullName + " ");
+        sb.append(PREFIX_AMOUNT + finance.getAmount().value + " ");
+        sb.append(PREFIX_CLIENT + finance.getClient().getName().fullName + " ");
         sb.append(PREFIX_DESCRIPTION + finance.getDescription().value + " ");
+        sb.append(PREFIX_TIME_DUE + finance.getTimeDue().getValue() + " ");
         return sb.toString();
     }
 }

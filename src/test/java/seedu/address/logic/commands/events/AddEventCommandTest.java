@@ -30,7 +30,6 @@ import seedu.address.model.ReadOnlyEventsBook;
 import seedu.address.model.ReadOnlyFinancesBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.event.Event;
-import seedu.address.model.event.exceptions.TimeStartAfterTimeEndException;
 import seedu.address.model.finance.Commission;
 import seedu.address.model.finance.Expense;
 import seedu.address.model.finance.Finance;
@@ -66,8 +65,7 @@ public class AddEventCommandTest {
     }
 
     @Test
-    public void execute_invalidClients_throwsCommandException() throws CommandException,
-            TimeStartAfterTimeEndException {
+    public void execute_invalidClients_throwsCommandException() throws CommandException {
         ModelStubAcceptingEventAdded modelStub = new ModelStubAcceptingEventAdded();
         Person validPerson = new PersonBuilder().build();
         new AddContactCommand(validPerson).execute(modelStub);
@@ -78,12 +76,12 @@ public class AddEventCommandTest {
         Event validEvent = new EventBuilder().withClient(inValidClients).build();
         AddEventCommand addEventCommand = new AddEventCommand(validEvent);
 
-        assertThrows(CommandException.class, AddEventCommand.MESSAGE_CLIENT_DOES_NOT_EXIST, () ->
+        assertThrows(CommandException.class, Messages.MESSAGE_CLIENT_DOES_NOT_EXIST, () ->
                 addEventCommand.execute(modelStub));
     }
 
     @Test
-    public void equals() throws TimeStartAfterTimeEndException {
+    public void equals() {
         Event a = new EventBuilder().withName("a").build();
         Event b = new EventBuilder().withName("b").build();
         AddEventCommand addACommand = new AddEventCommand(a);
@@ -228,6 +226,16 @@ public class AddEventCommandTest {
         }
 
         @Override
+        public ObservableList<Event> getFilteredEventList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredEventList(Predicate<Event> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void addCommission(Commission commission) {
             throw new AssertionError("This method should not be called.");
         }
@@ -265,6 +273,11 @@ public class AddEventCommandTest {
         @Override
         public Set<Person> getAllMatchedClients(Set<Person> clients) {
             return clients;
+        }
+
+        @Override
+        public Person getMatchedClient(Person client) {
+            throw new AssertionError("This method should not be called.");
         }
 
         @Override

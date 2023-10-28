@@ -1,8 +1,10 @@
 package seedu.address.logic.commands.finance;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_AMOUNT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CLIENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME_DUE;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
@@ -11,6 +13,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.finance.Expense;
+import seedu.address.model.person.Person;
 
 /**
  * Adds an Expense to the app.
@@ -22,10 +25,12 @@ public class AddExpenseCommand extends Command {
             + PREFIX_AMOUNT + "AMOUNT "
             + PREFIX_CLIENT + "CLIENT "
             + PREFIX_DESCRIPTION + "DESCRIPTION "
+            + PREFIX_TIME_DUE + "TIME DUE "
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_AMOUNT + "1000 "
             + PREFIX_CLIENT + "John Doe "
-            + PREFIX_DESCRIPTION + "Wedding photo shoot ";
+            + PREFIX_DESCRIPTION + "Wedding photo shoot "
+            + PREFIX_TIME_DUE + "tomorrow";
     public static final String MESSAGE_SUCCESS = "New expense added: %1$s";
     private Expense toAdd;
     public AddExpenseCommand(Expense expense) {
@@ -33,6 +38,16 @@ public class AddExpenseCommand extends Command {
     }
     @Override
     public CommandResult execute(Model model) throws CommandException {
+        requireNonNull(model);
+
+        Person client = this.toAdd.getClient();
+        if (client != null) {
+            if (!model.isValidClient(client)) {
+                throw new CommandException(Messages.MESSAGE_CLIENT_DOES_NOT_EXIST);
+            }
+            toAdd.setMatchedClientInstance(model.getMatchedClient(client));
+        }
+
         model.addExpense(toAdd);
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.formatFinance(toAdd)));
     }

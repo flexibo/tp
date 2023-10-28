@@ -3,13 +3,16 @@ package seedu.address.model.finance;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.model.person.Person;
+
 /**
  * Represents a commission from a client.
  */
 public class Commission extends Finance {
     private Amount amount;
-    private ClientName client;
+    private Person client;
     private Description description;
+    private TimeDue timeDue;
 
     /**
      * Constructs a Commission object with the specified amount, client, and description.
@@ -17,12 +20,14 @@ public class Commission extends Finance {
      * @param amount      The amount of the commission.
      * @param client      The client or payee associated with the commission.
      * @param description A description of the commission.
+     * @param timeDue     The time due of the commission.
      */
-    public Commission(Amount amount, ClientName client, Description description) {
+    public Commission(Amount amount, Person client, Description description, TimeDue timeDue) {
         requireAllNonNull(amount, client, description);
         this.amount = amount;
         this.client = client;
         this.description = description;
+        this.timeDue = timeDue;
     }
 
     /**
@@ -39,7 +44,7 @@ public class Commission extends Finance {
      *
      * @return The client or payee associated with the commission.
      */
-    public ClientName getClient() {
+    public Person getClient() {
         return client;
     }
     /**
@@ -49,7 +54,12 @@ public class Commission extends Finance {
     public boolean haveSameFields(Commission commission) {
         return amount.equals(commission.getAmount())
                 && client.equals((commission.getClient()))
-                && description.equals(commission.getDescription());
+                && description.equals(commission.getDescription())
+                && timeDue.equals(commission.getTimeDue());
+    }
+
+    public void setMatchedClientInstance(Person actualClient) {
+        client = actualClient;
     }
 
     /**
@@ -59,6 +69,11 @@ public class Commission extends Finance {
      */
     public Description getDescription() {
         return description;
+    }
+
+    @Override
+    public TimeDue getTimeDue() {
+        return timeDue;
     }
 
     /**
@@ -75,6 +90,7 @@ public class Commission extends Finance {
                 .add("client", client)
                 .add("amount", amount)
                 .add("description", description)
+                .add("timeDue", timeDue)
                 .toString();
     }
 }

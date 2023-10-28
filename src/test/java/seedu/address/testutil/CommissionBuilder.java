@@ -1,28 +1,43 @@
 package seedu.address.testutil;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import seedu.address.model.finance.Amount;
-import seedu.address.model.finance.ClientName;
 import seedu.address.model.finance.Commission;
 import seedu.address.model.finance.Description;
+import seedu.address.model.finance.TimeDue;
+import seedu.address.model.person.Address;
+import seedu.address.model.person.Company;
+import seedu.address.model.person.Email;
+import seedu.address.model.person.Name;
+import seedu.address.model.person.Person;
+import seedu.address.model.person.Phone;
+import seedu.address.model.person.TelegramName;
 
 /**
  * A utility class to help with building Commission objects.
  */
 public class CommissionBuilder {
-    public static final String DEFAULT_AMOUNT = "$900";
+    public static final String DEFAULT_AMOUNT = "900";
     public static final String DEFAULT_DESCRIPTION = "Test Description";
     public static final String DEFAULT_NAME = "Amy Bee";
-    private ClientName client;
+    public static final String DEFAULT_TIME_DUE = "27-10-2023 01:57";
+    public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+    private Person client;
     private Amount amount;
     private Description description;
+    private TimeDue timeDue;
 
     /**
      * Creates a {@code CommissionBuilder} with the default details.
      */
     public CommissionBuilder() {
-        this.client = new ClientName(DEFAULT_NAME);
+        this.client = new Person(new Name(DEFAULT_NAME), new Phone("00000"), new Email("filler@email.com"),
+                new Address(""), new Company(""), new TelegramName(""));
         this.amount = new Amount(DEFAULT_AMOUNT);
         this.description = new Description(DEFAULT_DESCRIPTION);
+        this.timeDue = new TimeDue(LocalDateTime.parse(DEFAULT_TIME_DUE, DATE_TIME_FORMATTER));
     }
 
     /**
@@ -44,11 +59,21 @@ public class CommissionBuilder {
     /**
      * Sets the {@code Person} of the {@code Commission} that we are building.
      */
-    public CommissionBuilder withPerson(String client) {
-        this.client = new ClientName(client);
+    public CommissionBuilder withPerson(String clientName) {
+        this.client = new Person(new Name(clientName), new Phone("00000"), new Email("filler@email.com"),
+                new Address(""), new Company(""), new TelegramName(""));
         return this;
     }
+
+    /**
+     * Sets the {@code TimeDue} of the {@code Commission} that we are building.
+     */
+    public CommissionBuilder withTimeDue(String timeDue) {
+        this.timeDue = new TimeDue(LocalDateTime.parse(timeDue, DATE_TIME_FORMATTER));
+        return this;
+    }
+
     public Commission build() {
-        return new Commission(amount, client, description);
+        return new Commission(amount, client, description, timeDue);
     }
 }

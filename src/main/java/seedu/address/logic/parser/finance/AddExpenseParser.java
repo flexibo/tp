@@ -4,20 +4,24 @@ import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_AMOUNT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CLIENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME_DUE;
 
+import java.time.LocalDateTime;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.finance.AddExpenseCommand;
 import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ArgumentTokenizer;
+import seedu.address.logic.parser.DateTimeParser;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.finance.Amount;
-import seedu.address.model.finance.ClientName;
 import seedu.address.model.finance.Description;
 import seedu.address.model.finance.Expense;
+import seedu.address.model.finance.TimeDue;
+import seedu.address.model.person.Person;
 
 /**
  * Parses input arguments and creates a new AddExpenseCommand object
@@ -26,7 +30,7 @@ public class AddExpenseParser implements Parser<AddExpenseCommand> {
     @Override
     public AddExpenseCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-            ArgumentTokenizer.tokenize(args, PREFIX_AMOUNT, PREFIX_CLIENT, PREFIX_DESCRIPTION);
+            ArgumentTokenizer.tokenize(args, PREFIX_AMOUNT, PREFIX_CLIENT, PREFIX_DESCRIPTION, PREFIX_TIME_DUE);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_AMOUNT)
                 || !argMultimap.getPreamble().isEmpty()) {
@@ -34,13 +38,15 @@ public class AddExpenseParser implements Parser<AddExpenseCommand> {
         }
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_AMOUNT, PREFIX_CLIENT, PREFIX_DESCRIPTION);
         Amount amount = ParserUtil.parseAmount(argMultimap.getValue(PREFIX_AMOUNT).get());
-        ClientName client = null;
+        Person client = null;
         if (argMultimap.getValue(PREFIX_CLIENT).isPresent()) {
-            client = ParserUtil.parseClientName(argMultimap.getValue(PREFIX_CLIENT).get());
+            client = ParserUtil.parseClient(argMultimap.getValue(PREFIX_CLIENT).get());
         }
         Description description = ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).orElse(""));
+        LocalDateTime dateTime = DateTimeParser.parseDateTimeInstance(argMultimap.getValue(PREFIX_TIME_DUE)
+                .orElse("now"));
 
-        Expense expense = new Expense(amount, client, description);
+        Expense expense = new Expense(amount, client, description, new TimeDue(dateTime));
         return new AddExpenseCommand(expense);
     }
 

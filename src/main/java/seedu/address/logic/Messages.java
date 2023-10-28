@@ -18,11 +18,17 @@ public class Messages {
     public static final String MESSAGE_INVALID_COMMAND_FORMAT = "Invalid command format! \n%1$s";
     public static final String MESSAGE_INVALID_PERSON_DISPLAYED_INDEX = "The person index provided is invalid";
     public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d persons listed!";
+    public static final String MESSAGE_EVENTS_LISTED_OVERVIEW = "%1$d events listed!";
+    public static final String MESSAGE_FINANCE_LISTED_OVERVIEW = "%1$d finances listed!";
+
+
     public static final String MESSAGE_DUPLICATE_FIELDS =
                 "Multiple values specified for the following single-valued field(s): ";
-    public static final String MESSAGE_INVALID_DATE_TIME = "Invalid date time input! End before start!";
+    public static final String MESSAGE_INVALID_DATE_TIME = "Invalid date-time duration! "
+            + "End time cannot be before start time";
     public static final String MESSAGE_INVALID_EVENT_DISPLAYED_INDEX = "The event index provided is invalid";
     public static final String MESSAGE_INVALID_FINANCE_DISPLAYED_INDEX = "The finance index provided is invalid";
+    public static final String MESSAGE_CLIENT_DOES_NOT_EXIST = "Client tagged does not exist in your contacts";
 
 
     /**
@@ -85,7 +91,9 @@ public class Messages {
                 .append("; Client: ")
                 .append(finance.getClient())
                 .append("; Description: ")
-                .append(finance.getDescription());
+                .append(finance.getDescription())
+                .append("; Time: ")
+                .append(finance.getTimeDue());
         return builder.toString();
     }
 }

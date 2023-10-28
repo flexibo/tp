@@ -1,19 +1,20 @@
 package seedu.address.model.event;
 
+import static java.util.Objects.requireNonNull;
+
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.model.event.exceptions.TimeStartAfterTimeEndException;
 import seedu.address.model.person.Person;
 
 /**
  * Represents an Event in the address book.
  * Guarantees: field values are validated, immutable.
  */
-public class Event {
+public class Event implements Comparable<Event> {
 
     private final EventName eventName;
     private final TimeStart timeStart;
@@ -21,7 +22,6 @@ public class Event {
     private Set<Person> clients = new HashSet<>();
     private final Location location;
     private final EventDescription eventDescription;
-
 
     /**
      * Constructs an {@code Event}.
@@ -31,18 +31,14 @@ public class Event {
      * @param clients An optional list of clients.
      * @param location An optional location.
      * @param eventDescription An optional description.
-     * @throws TimeStartAfterTimeEndException if the start time is after the end time.
      */
     public Event(EventName eventName, TimeStart timeStart, TimeEnd timeEnd, Set<Person> clients,
-                 Location location, EventDescription eventDescription) throws TimeStartAfterTimeEndException {
+                 Location location, EventDescription eventDescription) {
+        requireNonNull(timeStart);
+        requireNonNull(timeEnd);
         this.eventName = eventName;
         this.timeStart = timeStart;
         this.timeEnd = timeEnd;
-
-        if (timeStart.isAfter(timeEnd)) {
-            throw new TimeStartAfterTimeEndException();
-        }
-
         this.clients.addAll(clients);
         this.location = location;
         this.eventDescription = eventDescription;
@@ -129,5 +125,16 @@ public class Event {
                 .add("location", location)
                 .add("eventdescription", eventDescription)
                 .toString();
+    }
+
+    @Override
+    public int compareTo(Event o) {
+        if (this.timeStart.isBefore(o.getTimeStart())) {
+            return -1;
+        } else if (o.getTimeStart().isBefore(this.timeStart)) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }
