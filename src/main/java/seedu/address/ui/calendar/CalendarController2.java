@@ -3,35 +3,35 @@ package seedu.address.ui.calendar;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import seedu.address.model.calendar.CalendarActivity;
 import seedu.address.model.event.Event;
 import seedu.address.ui.UiPart;
-import seedu.address.ui.tab.EventsTab;
 
-import java.io.IOException;
+import java.awt.*;
 import java.net.URL;
 import java.time.ZonedDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.ResourceBundle;
 
 /**
  * Author: Da9el00 https://gist.github.com/Da9el00/f4340927b8ba6941eb7562a3306e93b6
  */
-public class CalendarController extends UiPart<Region> implements Initializable {
+public class CalendarController2 extends UiPart<Region> implements Initializable {
 
-    private static final String FXML = "Calendar.fxml";
+    private static final String FXML = "Calendar2.fxml";
     private ObservableList<Event> events;
     ZonedDateTime dateFocus;
     ZonedDateTime today;
@@ -43,9 +43,11 @@ public class CalendarController extends UiPart<Region> implements Initializable 
     private Text month;
 
     @FXML
-    private FlowPane calendar;
+    private GridPane calendar;
+    @FXML
+    private FlowPane flow;
 
-    public CalendarController(ObservableList<Event> eventList) {
+    public CalendarController2(ObservableList<Event> eventList) {
         super(FXML);
         this.events = eventList;
     }
@@ -71,18 +73,9 @@ public class CalendarController extends UiPart<Region> implements Initializable 
         drawCalendar();
     }
 
-    private void drawCalendar(){
+    private void drawCalendar() {
         year.setText(String.valueOf(dateFocus.getYear()));
         month.setText(String.valueOf(dateFocus.getMonth()));
-
-        double calendarWidth = calendar.getPrefWidth();
-        double calendarHeight = calendar.getPrefHeight();
-        double strokeWidth = 1;
-        double spacingH = calendar.getHgap();
-        double spacingV = calendar.getVgap();
-
-        //List of activities for a given month
-        Map<Integer, List<CalendarActivity>> calendarActivityMap = getCalendarActivitiesMonth(dateFocus);
 
         int monthMaxDate = dateFocus.getMonth().maxLength();
         //Check for leap year
@@ -91,41 +84,34 @@ public class CalendarController extends UiPart<Region> implements Initializable 
         }
         int dateOffset = ZonedDateTime.of(dateFocus.getYear(), dateFocus.getMonthValue(), 1,0,0,0,0,dateFocus.getZone()).getDayOfWeek().getValue();
 
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 7; j++) {
-                StackPane stackPane = new StackPane();
-
-                Rectangle rectangle = new Rectangle();
-                rectangle.setFill(Color.TRANSPARENT);
-                rectangle.setStroke(Color.BLACK);
-                rectangle.setStrokeWidth(strokeWidth);
-                double rectangleWidth =(calendarWidth/7) - strokeWidth - spacingH;
-                rectangle.setWidth(rectangleWidth);
-                double rectangleHeight = (calendarHeight/6) - strokeWidth - spacingV;
-                rectangle.setHeight(rectangleHeight);
-                stackPane.getChildren().add(rectangle);
-
-                int calculatedDate = (j+1)+(7*i);
+        for (int row = 0; row < 6; row ++) {
+            for (int column = 0; column < 7; column++) {
+                int calculatedDate = (column + 1) + (row * 7);
                 if(calculatedDate > dateOffset){
                     int currentDate = calculatedDate - dateOffset;
                     if(currentDate <= monthMaxDate){
-                        Text date = new Text(String.valueOf(currentDate));
-                        double textTranslationY = - (rectangleHeight / 2) * 0.75;
-                        date.setTranslateY(textTranslationY);
-                        stackPane.getChildren().add(date);
+                        VBox vBox = new VBox();
+                        CalendarItem calendarItem = new CalendarItem(currentDate);
+                        CalendarItem calendarItem2 = new CalendarItem(currentDate+1);
+                        vBox.getChildren().add(calendarItem.getRoot());
+                        vBox.getChildren().add(calendarItem2.getRoot());
+                        GridPane.setColumnSpan(calendarItem.getRoot(), 2);
+                        calendar.add(vBox, column, row);
 
                         List<CalendarActivity> calendarActivities = calendarActivityMap.get(currentDate);
-                        if(calendarActivities != null){
-                            createCalendarActivity(calendarActivities, rectangleHeight, rectangleWidth, stackPane);
+                        if(events != null){
+                            createCalendarActivity(events);
                         }
-                    }
-                    if(today.getYear() == dateFocus.getYear() && today.getMonth() == dateFocus.getMonth() && today.getDayOfMonth() == currentDate){
-                        rectangle.setStroke(Color.BLUE);
+
+                        if(today.getYear() == dateFocus.getYear() && today.getMonth() == dateFocus.getMonth() && today.getDayOfMonth() == currentDate){
+                            calendarItem.setToday(true);
+                        }
+                        return;
                     }
                 }
-                calendar.getChildren().add(stackPane);
             }
         }
+
     }
 
     private void createCalendarActivity(List<CalendarActivity> calendarActivities, double rectangleHeight, double rectangleWidth, StackPane stackPane) {
@@ -170,20 +156,5 @@ public class CalendarController extends UiPart<Region> implements Initializable 
             }
         }
         return  calendarActivityMap;
-    }
-
-    private Map<Integer, List<CalendarActivity>> getCalendarActivitiesMonth(ZonedDateTime dateFocus) {
-        List<CalendarActivity> calendarActivities = new ArrayList<>();
-        int year = dateFocus.getYear();
-        int month = dateFocus.getMonth().getValue();
-
-
-        Random random = new Random();
-        for (int i = 0; i < 50; i++) {
-            ZonedDateTime time = ZonedDateTime.of(year, month, random.nextInt(27)+1, 16,0,0,0,dateFocus.getZone());
-            calendarActivities.add(new CalendarActivity(time, "Hans", 111111));
-        }
-
-        return createCalendarMap(calendarActivities);
     }
 }

@@ -1,7 +1,5 @@
 package seedu.address.ui.tab;
 
-import java.util.logging.Logger;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.Region;
@@ -12,40 +10,47 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.ui.CommandBox;
-import seedu.address.ui.panel.FinanceListPanel;
 import seedu.address.ui.HelpWindow;
 import seedu.address.ui.ResultDisplay;
 import seedu.address.ui.UiPart;
+import seedu.address.ui.calendar.CalendarController;
+import seedu.address.ui.calendar.CalendarController2;
+import seedu.address.ui.panel.FinanceListPanel;
+import seedu.address.ui.panel.PersonListPanel;
+
+import java.net.URL;
+import java.util.logging.Logger;
 
 /**
- * The Finance Tab.
+ * The calendar tab.
  */
-public class FinanceTab extends UiPart<Region> {
-    private static final String FXML = "FinanceTab.fxml";
+public class CalendarTab extends UiPart<Region> {
+
+    private static final String FXML = "CalendarTab.fxml";
 
     private final Logger logger = LogsCenter.getLogger(getClass());
+
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-    private FinanceListPanel financeListPanel;
+    private PersonListPanel personListPanel;
     private ResultDisplay resultDisplay;
+
     private final HelpWindow helpWindow;
-
     private final TabPane tabPane;
-
     @FXML
     private StackPane commandBoxPlaceholder;
 
     @FXML
-    private StackPane financeListPanelPlaceholder;
+    private StackPane calendarPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
 
     /**
-     * Creates a {@code FinanceTab}.
+     * Creates a {@code CalendarTab}.
      */
-    public FinanceTab(TabPane tabPane) {
+    public CalendarTab(TabPane tabPane) {
         super(FXML);
         helpWindow = new HelpWindow();
         this.tabPane = tabPane;
@@ -57,18 +62,14 @@ public class FinanceTab extends UiPart<Region> {
     }
 
     private void setInnerParts() {
-        financeListPanel = new FinanceListPanel(logic.getFinanceList());
-        financeListPanelPlaceholder.getChildren().add(financeListPanel.getRoot());
+        CalendarController2 calendarController = new CalendarController2(logic.getEventList());
+        calendarPlaceholder.getChildren().add(calendarController.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
-    }
-
-    public FinanceListPanel getFinanceListPanel() {
-        return financeListPanel;
     }
 
     /**
@@ -82,43 +83,11 @@ public class FinanceTab extends UiPart<Region> {
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
-            if (commandResult.isShowHelp()) {
-                handleHelp();
-            }
-
-            if (commandResult.isExit()) {
-                handleExit();
-            }
-
-            if (commandResult.isChangeTab()) {
-                handleTabChange(commandResult.getTabToChange());
-            }
-
             return commandResult;
         } catch (CommandException | ParseException e) {
             logger.info("An error occurred while executing command: " + commandText);
             resultDisplay.setFeedbackToUser(e.getMessage());
             throw e;
         }
-    }
-
-    /**
-     * Opens the help window or focuses on it if it's already opened.
-     */
-    public void handleHelp() {
-        if (!helpWindow.isShowing()) {
-            helpWindow.show();
-        } else {
-            helpWindow.focus();
-        }
-    }
-
-    // TODO: Implement better exit handling within tabs.
-    private void handleExit() {
-        System.exit(0);
-    }
-
-    private void handleTabChange(int tabIndex) {
-        tabPane.getSelectionModel().select(tabIndex);
     }
 }

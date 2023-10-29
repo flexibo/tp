@@ -13,7 +13,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.ui.CommandBox;
 import seedu.address.ui.HelpWindow;
-import seedu.address.ui.PersonListPanel;
+import seedu.address.ui.panel.PersonListPanel;
 import seedu.address.ui.ResultDisplay;
 import seedu.address.ui.UiPart;
 
@@ -32,8 +32,7 @@ public class ContactsTab extends UiPart<Region> {
     private ResultDisplay resultDisplay;
 
     private final HelpWindow helpWindow;
-    @FXML
-    private TabPane tabPane;
+    private final TabPane tabPane;
 
     @FXML
     private StackPane commandBoxPlaceholder;
