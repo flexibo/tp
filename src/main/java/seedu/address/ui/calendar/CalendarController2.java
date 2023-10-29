@@ -90,19 +90,13 @@ public class CalendarController2 extends UiPart<Region> implements Initializable
                 if(calculatedDate > dateOffset){
                     int currentDate = calculatedDate - dateOffset;
                     if(currentDate <= monthMaxDate){
-                        VBox vBox = new VBox();
                         CalendarItem calendarItem = new CalendarItem(currentDate);
-                        CalendarItem calendarItem2 = new CalendarItem(currentDate+1);
-                        vBox.getChildren().add(calendarItem.getRoot());
-                        vBox.getChildren().add(calendarItem2.getRoot());
-                        GridPane.setColumnSpan(calendarItem.getRoot(), 2);
-                        calendar.add(vBox, column, row);
-
+                        //GridPane.setColumnSpan(calendarItem.getRoot(), 2);
+                        calendar.add(calendarItem.getRoot(), column, row);
 
                         if(today.getYear() == dateFocus.getYear() && today.getMonth() == dateFocus.getMonth() && today.getDayOfMonth() == currentDate){
                             calendarItem.setToday(true);
                         }
-                        return;
                     }
                 }
             }

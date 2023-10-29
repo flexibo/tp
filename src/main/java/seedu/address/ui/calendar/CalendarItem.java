@@ -26,7 +26,7 @@ public class CalendarItem extends UiPart<Region> {
     public CalendarItem(int day) {
         super(FXML);
         this.day.setText(String.valueOf(day));
-        this.day.setBackground(new Background(new BackgroundFill(Color.BLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+        //this.day.setBackground(new Background(new BackgroundFill(Color.BLUE, CornerRadii.EMPTY, Insets.EMPTY)));
     }
 
     public void setToday(boolean isToday) {
