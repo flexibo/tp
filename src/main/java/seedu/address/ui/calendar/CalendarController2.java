@@ -98,10 +98,6 @@ public class CalendarController2 extends UiPart<Region> implements Initializable
                         GridPane.setColumnSpan(calendarItem.getRoot(), 2);
                         calendar.add(vBox, column, row);
 
-                        List<CalendarActivity> calendarActivities = calendarActivityMap.get(currentDate);
-                        if(events != null){
-                            createCalendarActivity(events);
-                        }
 
                         if(today.getYear() == dateFocus.getYear() && today.getMonth() == dateFocus.getMonth() && today.getDayOfMonth() == currentDate){
                             calendarItem.setToday(true);
