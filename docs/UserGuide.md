@@ -867,7 +867,7 @@ Shows a list of <span style="color:#02bd5c">finances</span> within the specified
 
 Format: `filter-t s/START_TIME e/END_TIME` 
 
-> **RESULT:** You have _number of_ commission and _number of_ expenses between `START_TIME` and `END_TIME`
+> **RESULT:** You have _number of_ commission(s) and _number of_ expense(s) between `START_TIME` and `END_TIME`
 
 **Example:**
 ![finance filter-t demo](images/finance_filter-t.png)
@@ -1186,7 +1186,7 @@ Shows a list of all upcoming <span style="color:#7725fa">events</span> before `T
 
 Format: `filter-t TIME`
 
-> **RESULT:** You have _number of matched events_ events between now and `TIME`.
+> **RESULT:** You have _number of_ events between now and `TIME`.
 
 <box type="tip" seamless>
 
