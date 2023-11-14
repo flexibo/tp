@@ -572,7 +572,7 @@ with(this){return _c('p',[_v("Shows a list of "),_c('span',{staticStyle:{"color"
 with(this){return _c('p',[_v("Format: "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("filter-t s/START_TIME e/END_TIME")])])}
 },function anonymous(
 ) {
-with(this){return _c('blockquote',[_c('p',[_c('strong',[_v("RESULT:")]),_v(" You have "),_c('em',[_v("number of")]),_v(" commission and "),_c('em',[_v("number of")]),_v(" expenses between "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("START_TIME")]),_v(" and "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("END_TIME")])])])}
+with(this){return _c('blockquote',[_c('p',[_c('strong',[_v("RESULT:")]),_v(" You have "),_c('em',[_v("number of")]),_v(" commission(s) and "),_c('em',[_v("number of")]),_v(" expense(s) between "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("START_TIME")]),_v(" and "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("END_TIME")])])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_c('strong',[_v("Example:")]),_v(" "),_c('a',{attrs:{"href":"/tp/images/finance_filter-t.png","target":"_self"}},[_c('img',{staticClass:"img-fluid",attrs:{"src":"/tp/images/finance_filter-t.png","alt":"finance filter-t demo"}})])])}
@@ -782,7 +782,7 @@ with(this){return _c('p',[_v("Shows a list of all upcoming "),_c('span',{staticS
 with(this){return _c('p',[_v("Format: "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("filter-t TIME")])])}
 },function anonymous(
 ) {
-with(this){return _c('blockquote',[_c('p',[_c('strong',[_v("RESULT:")]),_v(" You have "),_c('em',[_v("number of matched events")]),_v(" events between now and "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("TIME")]),_v(".")])])}
+with(this){return _c('blockquote',[_c('p',[_c('strong',[_v("RESULT:")]),_v(" You have "),_c('em',[_v("number of")]),_v(" events between now and "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("TIME")]),_v(".")])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_c('strong',[_v("Example:")]),_v(" "),_c('a',{attrs:{"href":"/tp/images/events_filter-t.png","target":"_self"}},[_c('img',{staticClass:"img-fluid",attrs:{"src":"/tp/images/events_filter-t.png","alt":"events filter-t demo"}})])])}
@@ -1166,6 +1166,6 @@ with(this){return _c('p',[_v("Still having issues? Please email us at "),_c('a',
 with(this){return _c('p',[_c('a',{attrs:{"href":"#table-of-contents"}},[_v("↑ Back to Table of Contents")])])}
 },function anonymous(
 ) {
-with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.1.0")]),_v(", generated on Wed, 15 Nov 2023, 5:41:28 GMT+8]")])])])}
+with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.1.0")]),_v(", generated on Wed, 15 Nov 2023, 5:45:19 GMT+8]")])])])}
 }];
   
