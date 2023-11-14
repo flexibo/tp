@@ -526,13 +526,13 @@ If a client is updated or deleted after it is used to create a <span style="colo
 
 <div style="page-break-after: always;"></div>
 
-#### <span style="color:#a30039">Filtering Contacts by `NAME`: Contacts Tab →</span> `filter-n`
+#### <span style="color:#a30039">Filtering Contacts by `NAME`: Contacts Tab →</span> `filter-n` 
 
 Shows a list of <span style="color:#a30039">contacts</span> whose `NAME` contains specified string.
 
 Format: `filter-n KEYWORD [MORE_KEYWORDS]...`
 
-> **RESULT:** Listed contacts with names containing `KEYWORD [MORE_KEYWORDS]`
+> **RESULT:** Listed contacts with names containing `KEYWORD [MORE_KEYWORDS]` (found: _number of matched contacts_)
 
 <box type="tip" seamless>
 
@@ -569,7 +569,7 @@ Shows a list of <span style="color:#a30039">contacts</span> whose <code>COMPANY<
 
 Format: `filter-c KEYWORD [MORE_KEYWORDS]...`
 
-> **RESULT:** Listed contacts with companies containing `KEYWORD [MORE_KEYWORDS]`
+> **RESULT:** Listed contacts with companies containing `KEYWORD [MORE_KEYWORDS]` (found: _number of matched contacts_)
 
 <box type="tip" seamless>
 
@@ -827,7 +827,7 @@ Shows a list of <span style="color:#02bd5c">finances</span> whose `CLIENT` name 
 
 Format: `filter-c KEYWORD [MORE_KEYWORDS]...`
 
-> **RESULT:** Listed finances with client's name containing `KEYORD MORE_KEYWORDS`
+> **RESULT:** Listed finances with client's name containing `KEYWORD [MORE_KEYWORDS]` (found: _number of matched finances_)
 
 <box type="tip" seamless>
 
@@ -865,9 +865,9 @@ Format: `filter-c KEYWORD [MORE_KEYWORDS]...`
 
 Shows a list of <span style="color:#02bd5c">finances</span> within the specified `START_TIME` and `END_TIME`.
 
-Format: `filter-t s/START_TIME e/END_TIME`
+Format: `filter-t s/START_TIME e/END_TIME` 
 
-> **RESULT:** Listed finances within `START_TIME` and `END_TIME`
+> **RESULT:** You have _number of_ commission and _number of_ expenses between `START_TIME` and `END_TIME`
 
 **Example:**
 ![finance filter-t demo](images/finance_filter-t.png)
@@ -1106,7 +1106,7 @@ Shows a list of <span style="color:#7725fa">events</span> that contains the name
 
 Format: `filter-c KEYWORD [MORE_KEYWORDS]...`
 
-> **RESULT:** Listed events for clients name containing `KEYWORD [MORE_KEYWORD]`
+> **RESULT:** Listed events for clients name containing `KEYWORD [MORE_KEYWORD]` (found: _number of matched events_)
 
 <box type="tip" seamless>
 
@@ -1146,7 +1146,7 @@ Shows a list of <span style="color:#7725fa">events</span> that contains the even
 
 Format: `filter-n KEYWORD [MORE_KEYWORDS]...`
 
-> **RESULT:** Listed events with name containing `KEYWORD [MORE_KEYWORDS]`
+> **RESULT:** Listed events with name containing `KEYWORD [MORE_KEYWORDS]` (found: _number of matched events_)
 
 <box type="tip" seamless>
 
@@ -1182,11 +1182,11 @@ Format: `filter-n KEYWORD [MORE_KEYWORDS]...`
 
 #### <span style="color:#7725fa">Filtering events by `TIME`: Events Tab → `filter-t`
 
-Shows a list of all <span style="color:#7725fa">events</span> before `TIME`.
+Shows a list of all upcoming <span style="color:#7725fa">events</span> before `TIME`.
 
 Format: `filter-t TIME`
 
-> **RESULT:** (Number of matched events) events listed!
+> **RESULT:** You have _number of matched events_ events between now and `TIME`.
 
 <box type="tip" seamless>
 
