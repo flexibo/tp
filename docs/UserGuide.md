@@ -12,7 +12,8 @@
 
 **FreelanceBuddy** is a **powerful and efficient Command Line Interface (CLI)** optimized app designed **just for you**!
 
-It's your **one-stop solution** for managing multiple clients, staying on top of your financial reports and keeping track of your meetings with ease.
+It's your **one-stop solution** for <span style="color:#a30039">managing multiple clients</span>, staying on top of your <span style="color:#02bd5c">financial reports</span> and <span style="color:#7725fa">keeping track of your meetings</span> with ease.
+
 If you are a freelancer who is looking to optimize your workflow, look no further! FreelanceBuddy might just be the buddy for you!
 
 **NEW USER?** Check out our [Quick Start](#quick-start) guide or see what [Features](#features) our application has!
@@ -20,6 +21,8 @@ If you are a freelancer who is looking to optimize your workflow, look no furthe
 **NEED HELP?** Take a look at the [Commands](#commands) section!
 
 **ALREADY A PRO?** Jump ahead to the [Command Summary](#command-summary) to get an overview of all the commands!
+
+![duck](images/address_book_32.png)
 
 <div style="page-break-after: always;"></div>
 
@@ -29,21 +32,25 @@ If you are a freelancer who is looking to optimize your workflow, look no furthe
 
 --------------------------------------------------------------------------------------------------------------------
 
+<span class="badge rounded-pill bg-success" data-v-4d146e2c=""><span aria-hidden="true" class="far fa-star" data-v-4d146e2c=""></span></span> <span class="badge rounded-pill bg-success" style="font-size: 14px; vertical-align: middle;">Beginner</span> 
+<span class="badge rounded-pill bg-danger" data-v-4d146e2c=""><span aria-hidden="true" class="far fa-star" data-v-4d146e2c=""></span></span> <span class="badge rounded-pill bg-danger" style="font-size: 14px; vertical-align: middle;">Advanced</span>
+
+
 Navigate the User Guide by clicking on the headings below.
 
   <ul style="font-size: 18px; color: #4F4F4F; font-weight: bold;">  
-      <li><a href="{{ baseUrl }}/UserGuide.html#getting-started" style="color:black">Getting Started</a></li>  
+      <li><a href="{{ baseUrl }}/UserGuide.html#getting-started" style="color:black">Getting Started <span class="badge rounded-pill bg-success" data-v-4d146e2c=""><span aria-hidden="true" class="far fa-star" data-v-4d146e2c=""></span></span></a></li>
       <ul style="font-size: 16px; font-weight: bold;" style="color:black">  
-          <li><a href="{{ baseUrl }}/UserGuide.html#quick-start" style="color:#4F4F4F">Quick Start <span class="badge rounded-pill bg-success" data-v-4d146e2c=""><span aria-hidden="true" class="far fa-star" data-v-4d146e2c=""></span></span></a></li>  
-          <li><a href="{{ baseUrl }}/UserGuide.html#navigating-this-user-guide" style="color:#4F4F4F">Navigating This User Guide <span class="badge rounded-pill bg-success" data-v-4d146e2c=""><span aria-hidden="true" class="far fa-star" data-v-4d146e2c=""></span></span></a></li>
-          <li><a href="{{ baseUrl }}/UserGuide.html#features" style="color:#4F4F4F">Features <span class="badge rounded-pill bg-success" data-v-4d146e2c=""><span aria-hidden="true" class="far fa-star" data-v-4d146e2c=""></span></span></a></li>  
+          <li><a href="{{ baseUrl }}/UserGuide.html#quick-start" style="color:#4F4F4F">Quick Start</a></li> 
+          <li><a href="{{ baseUrl }}/UserGuide.html#navigating-this-user-guide" style="color:#4F4F4F">Navigating This User Guide</a></li> 
+          <li><a href="{{ baseUrl }}/UserGuide.html#features" style="color:#4F4F4F">Features</a></li> 
       </ul>  
-      <li><a href="{{ baseUrl }}/UserGuide.html#commands" style="color:black">Commands</a></li>  
+      <li><a href="{{ baseUrl }}/UserGuide.html#commands" style="color:black">Commands <span class="badge rounded-pill bg-success" data-v-4d146e2c=""><span aria-hidden="true" class="far fa-star" data-v-4d146e2c=""></span></span></a></li>
       <ul style="font-size: 16px; font-weight: bold;">  
-          <li><a href="{{ baseUrl }}/UserGuide.html#general-commands" style="color:#4F4F4F">General Commands <span class="badge rounded-pill bg-success" data-v-4d146e2c=""><span aria-hidden="true" class="far fa-star" data-v-4d146e2c=""></span></span></a></li>  
-          <li><a href="{{ baseUrl }}/UserGuide.html#contacts-management" style="color:#4F4F4F">Contacts Management <span class="badge rounded-pill bg-success" data-v-4d146e2c=""><span aria-hidden="true" class="far fa-star" data-v-4d146e2c=""></span></span></a></li>  
-          <li><a href="{{ baseUrl }}/UserGuide.html#finance-management" style="color:#4F4F4F">Finance Management <span class="badge rounded-pill bg-success" data-v-4d146e2c=""><span aria-hidden="true" class="far fa-star" data-v-4d146e2c=""></span></span></a></li>  
-          <li><a href="{{ baseUrl }}/UserGuide.html#events-management" style="color:#4F4F4F">Events Management <span class="badge rounded-pill bg-success" data-v-4d146e2c=""><span aria-hidden="true" class="far fa-star" data-v-4d146e2c=""></span></span></a></li>  
+          <li><a href="{{ baseUrl }}/UserGuide.html#general-commands" style="color:#4F4F4F">General Commands</a></li>  
+          <li><a href="{{ baseUrl }}/UserGuide.html#contacts-management" style="color:#4F4F4F">Contacts Management</a></li>  
+          <li><a href="{{ baseUrl }}/UserGuide.html#finance-management" style="color:#4F4F4F">Finance Management</a></li>  
+          <li><a href="{{ baseUrl }}/UserGuide.html#events-management" style="color:#4F4F4F">Events Management </a></li>
       </ul>  
       <li><a href="{{ baseUrl }}/UserGuide.html#data-storage" style="color:black">Data Storage</a></li>  
       <ul style="font-size: 16px; font-weight: bold;">  
@@ -51,7 +58,7 @@ Navigate the User Guide by clicking on the headings below.
           <li><a href="{{ baseUrl }}/UserGuide.html#editing-the-data-file" style="color:#4F4F4F">Editing the Data File <span class="badge rounded-pill bg-danger" data-v-4d146e2c=""><span aria-hidden="true" class="far fa-star" data-v-4d146e2c=""></span></span></a></li> 
           <li><a href="{{ baseUrl }}/UserGuide.html#configuration-files" style="color:#4F4F4F">Configuration Files <span class="badge rounded-pill bg-danger" data-v-4d146e2c=""><span aria-hidden="true" class="far fa-star" data-v-4d146e2c=""></span></span></a></li>
       </ul>  
-      <li><a href="{{ baseUrl }}/UserGuide.html#accepted-date-time-formats" style="color:black">Accepted Date-time Formats <span class="badge rounded-pill bg-success" data-v-4d146e2c=""><span aria-hidden="true" class="far fa-star" data-v-4d146e2c=""></span></span></a></li>  
+      <li><a href="{{ baseUrl }}/UserGuide.html#accepted-date-time-formats" style="color:black">Accepted Date-time Formats <span class="badge rounded-pill bg-success" data-v-4d146e2c=""><span aria-hidden="true" class="far fa-star" data-v-4d146e2c=""></span></span><span class="badge rounded-pill bg-danger" data-v-4d146e2c=""><span aria-hidden="true" class="far fa-star" data-v-4d146e2c=""></span></span></a></li>  
       <li><a href="{{ baseUrl }}/UserGuide.html#command-summary" style="color:black">Command Summary <span class="badge rounded-pill bg-danger" data-v-4d146e2c=""><span aria-hidden="true" class="far fa-star" data-v-4d146e2c=""></span></span></a></li>  
       <ul style="font-size: 16px; font-weight: bold;">  
           <li><a href="{{ baseUrl }}/UserGuide.html#general" style="color:#4F4F4F">General</a></li>  
@@ -138,13 +145,25 @@ The FreelanceBuddy User Guide is built to be user-friendly for all levels of use
 <span class="badge rounded-pill bg-danger" data-v-4d146e2c=""><span aria-hidden="true" class="far fa-star" data-v-4d146e2c=""></span></span> <span class="badge rounded-pill bg-danger" style="font-size: 14px; vertical-align: middle;">Advanced</span>
 : Sections for advanced or experienced users.
 
-#### Format of Longer Sections
+#### Quick Navigation in one click
 
+##### <span style="color:#f79400">Mini Table of Contents</span>
 We have included a mini table of contents to help you navigate each section quickly. An example is shown below:
 
 ![miniToc](images/miniToc.png =450x)
-* You can click on the command or the brief description to quickly jump to that sub-section.
-* Each sub-section includes a "Back to ..." link for you to jump back up to the table of contents where you can continue exploring from there.
+
+You can click on the command or the brief description to quickly jump to that sub-section.
+
+##### <span style="color:#f79400">Mini Hyper Links</span>
+Each sub-section includes a "Back to ..." link for you to jump back up to the table of contents / major sections where you can continue exploring from there. For example:
+
+[↑ Back to Table of Contents](#table-of-contents) 
+
+[Back to Navigating This User Guide](#navigating-this-user-guide)
+
+##### <span style="color:#f79400">Orange Arrow</span>
+
+![up arrow](images/up.jpg =20x) &nbsp; Navigate to the top by clicking on the orange arrow at the bottom right of the page.
 
 #### Boxes
 
@@ -241,7 +260,7 @@ You can check out commands related to <span style="color:#02bd5c">Finance</span>
 
 <h4 style="color:#7725fa">Event Scheduling System</h4>
 
--> ![expense icon](images/icons/events.webp =35x) <-
+-> ![events icon](images/icons/events.webp =35x) <-
 
 _-> Keep track of your daily schedule by creating <span style="color:#7725fa">events</span> in FreelanceBuddy! <-_
 
@@ -289,7 +308,7 @@ You can check out commands related to <span style="color:#7725fa">Events</span> 
 * Note that those with the same command may mean different things in different tabs. <br>
   e.g. [`filter-c`](#finding-contact-by-company-contacts-tab-filter-c) in Contacts filters by company name, while [`filter-c`](#filtering-events-by-clients-events-tab-filter-c) in Events tab filters by client's name
 
-* If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
+* Be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 
 </box>
 
@@ -341,10 +360,10 @@ Acceptable values for `TAB_NAME`:
 
 * `finance`
 
-| #g#Positive Examples## | #r#Negative Examples## | <span style ='color: darkred; font-weight: bold;'>Reason for Error</span>                                                  |
-|:----------------------:|:----------------------:|----------------------------------------------------------------------------------------------------------------------------|
-|     `tab contacts`     |     `tab contact`      | <span style ='color: darkred; text-decoration: underline;'>Invalid command format</span><br/> Wrong spelling for "contacts" |
-|      `tab events`      |         `tab`          | <span style ='color: darkred; text-decoration: underline;'>Invalid Command format</span><br/> Missing `TAB_NAME`           |
+| #g#Positive Examples## | #r#Negative Examples## | <span style ='color: darkred; font-weight: bold;'>Reason for Error</span>                                              |
+|:----------------------:|:----------------------:|------------------------------------------------------------------------------------------------------------------------|
+|     `tab contacts`     |     `tab contact`      | <span style ='color: darkred; text-decoration: underline;'>Invalid Parameter</span><br/> Wrong spelling for "contacts" |
+|      `tab events`      |         `tab`          | <span style ='color: darkred; text-decoration: underline;'>Missing Parameter(s)</span><br/> Missing `TAB_NAME`         |
 
 [Back to General Commands](#general-commands)
 
@@ -474,6 +493,7 @@ If a client is updated or deleted after it is used to create a <span style="colo
 * See reasoning [here](#faq)
   </box>
 
+<div style="page-break-after: always;"></div>
 
 |     Parameter     | Format                                                                                                         | Examples (#g#Valid##/#r#Invalid##)                                                                                             |
 |:-----------------:|----------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
@@ -491,6 +511,8 @@ If a client is updated or deleted after it is used to create a <span style="colo
 |  `edit 2 n/Betsy Crower t/`   | `edit 1 n/‘Chewbaca’ The 1st n/‘Chewbaca’ The 1st` | <span style ='color: darkred; text-decoration: underline'>Excessive Parameter(s)</span><br> At most one `[n/NAME]` is allowed |
 
 [Back to Contacts Management](#contacts-management)
+
+<div style="page-break-after: always;"></div>
 
 #### <span style="color:#a30039">Deleting a Contact entry: Contacts Tab →</span> `delete`
 
@@ -551,6 +573,8 @@ Format: `filter-n KEYWORD [MORE_KEYWORDS]...`
 
 **Example:**
 ![contacts filter-n demo](images/contacts_filter-n.png)
+
+<div style="page-break-after: always;"></div>
 
 | Parameter | Format                    | Examples (#g#Valid##/#r#Invalid##) |
 |:---------:|---------------------------|------------------------------------|
@@ -877,6 +901,8 @@ Format: `filter-t s/START_TIME e/END_TIME`
 |:-----------------------------:|:-----------------------------------------------------------------------|:------------------------------------|
 | `s/START_TIME` / `e/END_TIME` | Refer to the [accepted Date-time formats](#accepted-date-time-formats) |                                     |
 
+<div style="page-break-after: always;"></div>
+
 |        #g#Positive Examples##        |    #r#Negative Examples##    | <span style ='color: darkred; font-weight: bold;'>Reason for Error</span>                                                                                 |
 |:------------------------------------:|:----------------------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
 |     `filter-t s/tmr e/next week`     | `filter-t s/next week e/tmr` | <span style ='color: darkred; text-decoration: underline'>Invalid Date-Time Duration</span><br> `e/END_TIME` must be chronologically after `s/START_TIME` |
@@ -909,8 +935,12 @@ The summary command provides the following details with regard to a `CLIENT` :
 * Summary only works if the `CLIENT` exists in <span style="color:#a30039">Contacts</span>, so even if you have remaining finance entries linked to a specific `CLIENT`, if you delete the `CLIENT` in the <span style="color:#a30039">Contacts</span>, then the summary command won't work
   </box>
 
+<div style="page-break-after: always;"></div>
+
 **Example:**
 ![finance summary demo](images/finance_summary.png)
+
+<div style="page-break-after: always;"></div>
 
 | Parameter | Format                    | Examples (#g#Valid##/#r#Invalid##)            |
 |:---------:|:--------------------------|:----------------------------------------------|
@@ -1041,7 +1071,7 @@ Format: `edit INDEX [n/NAME] [s/START_TIME] [e/END_TIME] [c/CLIENT]…​ [l/LOC
 * At least one of the [optional] fields must be provided
 * You can remove [optional] fields by typing `PREFIX/` without specifying anything after. e.g., `d/`
     * Refer to [the add command](#adding-an-event-events-tab-add) to check which parameters are optional fields
-* Read [this](#editing-START_TIME-END_TIME-in-events) for more information about editing `START_TIME` and `END_TIME`
+* Read [this](#editing-start-time-end-time-in-events) for more information about editing `START_TIME` and `END_TIME`
   </box>
 
 <box type="warning" seamless>
@@ -1275,14 +1305,16 @@ For `config.json`:
 | `logLevel`           | The logging level of the application.                                  | `INFO`             |
 | `userPrefsFilePath`  | Determines the file that is used to read the user's preferences from.  | `preferences.json` |
 
+<div style="page-break-after: always;"></div>
+
 For the preferences file (which depends on the `userPrefsFilePath` in `config.json`):
 
 
 | Config                          | Description                                                         | Default                  |
 |---------------------------------|---------------------------------------------------------------------|--------------------------|
 | `guiSettings.windowWidth`       | The width of FreelanceBuddy's GUI window.                           | `740.0`                  |
-| `guiSettings.windowHeight`      | The height of FreelanceBuddy's GUI window.                          | `600.0`                   |
-| `guiSettings.windowCoordinates` | The coordinates at which FreelanceBuddy is located on your display. |                          |
+| `guiSettings.windowHeight`      | The height of FreelanceBuddy's GUI window.                          | `600.0`                  |
+| `guiSettings.windowCoordinates` | The coordinates at which FreelanceBuddy is located on your display. | -                        |
 | `addressBookFilePath`           | The filepath of the AddressBook data file.                          | `data\\addressbook.json` |
 | `eventsFilePath`                | The filepath of the EventsBook data file.                           | `data\\eventsbook.json`  |
 | `financeFilePath`               | The filepath of the FinanceBook data file                           | `data\\financebook.json` |
@@ -1309,7 +1341,7 @@ As this section is relatively long, we have provided a mini table of content for
 - [Using Date and Time Inputs Together](#using-date-and-time-inputs-to-together)
 - [Using Date-time Formats for Durations](#using-date-time-formats-for-durations)
 - [Using Date-time Formats for Instances](#using-date-time-formats-for-time-instances)
-- [Editing `START_TIME` `END_TIME` in Events](#editing-START_TIME-END_TIME-in-events)
+- [Editing `START_TIME` `END_TIME` in Events ](#editing-start-time-end-time-in-events)<span class="badge rounded-pill bg-danger" data-v-4d146e2c=""><span aria-hidden="true" class="far fa-star" data-v-4d146e2c=""></span></span>
 
 [↑ Back to Table of Contents](#table-of-contents)
 
@@ -1321,24 +1353,24 @@ As this section is relatively long, we have provided a mini table of content for
 
 Below is a table of accepted numbered date formats, these represent `<DATE>` only.
 
-|    Format    | Examples                   | Remarks            |
-|:------------:|----------------------------|--------------------|
-|  `d/M/yyyy`  | `1/1/2023`, `01/12/2023`   |                    |
-|  `d-M-yyyy`  | `1-1-2023`, `01-12-2023`   |                    |
-|   `d/M/yy`   | `1/1/23`, `01/12/12`       |                    |
-|   `d-M-yy`   | `1-1-23`, `01-12-12`       |                    |
-| `MMM d yyyy` | `Jan 1 2023`, `jan 1 2023` | Not case sensitive |
-|  `MMM d yy`  | `Jan 1 23`, `jan 1 23`     | Not case sensitive |
-| `d MMM yyyy` | `1 Jan 2023`, `1 jan 2023` | Not case sensitive |
-|  `d MMM yy`  | `Jan 1 2023`, `1 jan 23`   | Not case sensitive |
-|  `yyyy/M/d`  | `2023/1/1`, `2023/12/01`   |                    |
-|   `yy/M/d`   | `23/1/1`, `23/12/01`       |                    |
-|  `yyyy-M-d`  | `2023-1-1`, `2023-12-01`   |                    |
-|   `yy-M-d`   | `23-1-1`, `23-12-01`       |                    |
-|    `d/M`     | `1/1`, `01/12`             |                    |
-|    `d-M`     | `1-1`, `01-12`             |                    |
-|   `MMM d`    | `Jan 1`, `jan 1`           | Not case sensitive |
-|   `d MMM`    | `1 Jan`, `jan 1`           | Not case sensitive |
+|    Format    | Examples                   |  Case Sensitive?   |
+|:------------:|----------------------------|:------------------:|
+|  `d/M/yyyy`  | `1/1/2023`, `01/12/2023`   | :white_check_mark: |
+|  `d-M-yyyy`  | `1-1-2023`, `01-12-2023`   | :white_check_mark: |
+|   `d/M/yy`   | `1/1/23`, `01/12/12`       | :white_check_mark: |
+|   `d-M-yy`   | `1-1-23`, `01-12-12`       | :white_check_mark: |
+| `MMM d yyyy` | `Jan 1 2023`, `jan 1 2023` |        :x:         |
+|  `MMM d yy`  | `Jan 1 23`, `jan 1 23`     |        :x:         |
+| `d MMM yyyy` | `1 Jan 2023`, `1 jan 2023` |        :x:         |
+|  `d MMM yy`  | `Jan 1 2023`, `1 jan 23`   |        :x:         |
+|  `yyyy/M/d`  | `2023/1/1`, `2023/12/01`   | :white_check_mark: |
+|   `yy/M/d`   | `23/1/1`, `23/12/01`       | :white_check_mark: |
+|  `yyyy-M-d`  | `2023-1-1`, `2023-12-01`   | :white_check_mark: |
+|   `yy-M-d`   | `23-1-1`, `23-12-01`       | :white_check_mark: |
+|    `d/M`     | `1/1`, `01/12`             | :white_check_mark: |
+|    `d-M`     | `1-1`, `01-12`             | :white_check_mark: |
+|   `MMM d`    | `Jan 1`, `jan 1`           |        :x:         |
+|   `d MMM`    | `1 Jan`, `jan 1`           |        :x:         |
 
 > 🏷 ****Note**** inputs without year will be assumed to be the current year.
 
@@ -1375,17 +1407,17 @@ Below is a table of accepted numbered time formats, these represent `<TIME>` onl
 
 > 🏷 ****Note**** all inputs are not case-sensitive.
 
-|  Format  | Examples             | Remarks            |
-|:--------:|----------------------|--------------------|
-|  `HHmm`  | `1800`, `0600`       |                    |
-| `HH:mm`  | `18:00`, `06:00`     |                    |
-| `HH.mm`  | `18.00`, `06.00`     |                    |
-|  `h a`   | `6 pm`, `6 PM`       |                    |
-|   `ha`   | `6pm`, `6PM`         |                    |
-| `h:mm a` | `6:00 PM`, `6:00 am` | Not case sensitive |
-| `h:mma`  | `6:00pm`, `6:00AM`   | Not case sensitive |
-| `h.mm a` | `6.00 pm`, `6.00 AM` | Not case sensitive |
-| `h.mma`  | `6.00PM`, `6.00am`   | Not case sensitive |
+|  Format  | Examples             |  Case Sensitive?   |
+|:--------:|----------------------|:------------------:|
+|  `HHmm`  | `1800`, `0600`       | :white_check_mark: |
+| `HH:mm`  | `18:00`, `06:00`     | :white_check_mark: |
+| `HH.mm`  | `18.00`, `06.00`     | :white_check_mark: |
+|  `h a`   | `6 pm`, `6 PM`       | :white_check_mark: |
+|   `ha`   | `6pm`, `6PM`         | :white_check_mark: |
+| `h:mm a` | `6:00 PM`, `6:00 am` |        :x:         |
+| `h:mma`  | `6:00pm`, `6:00AM`   |        :x:         |
+| `h.mm a` | `6.00 pm`, `6.00 AM` |        :x:         |
+| `h.mma`  | `6.00PM`, `6.00am`   |        :x:         |
 
 [Back to Date-time Contents](#contents-of-this-section)
 
@@ -1458,9 +1490,11 @@ There are several **rules** and [**assumptions**](#assumptions-when-using-date-t
 
 </box>
 
+[Back to Date-time Contents](#contents-of-this-section)
+
 <div style="page-break-after: always;"></div>
 
-##### Accepted Date-time Combinations of `s/` and `e/`
+##### <span style="color:#f79400">Accepted Date-time Combinations of `s/` and `e/`</span>
 
 > `<DATE>` and `<TIME>` placeholder represents the `<DATE>` and `<TIME>` formats that are shown above.
 
@@ -1481,7 +1515,9 @@ There are several **rules** and [**assumptions**](#assumptions-when-using-date-t
 1. You cannot start from a `<DATE>` to `<TIME>` or vice versa.
 1. Following the assumptions, `e/` cannnot be earlier than `s/`.
 
-##### Assumptions when using Date-time Combinations
+[Back to Date-time Contents](#contents-of-this-section)
+
+##### <span style="color:#f79400">Assumptions when using Date-time Combinations</span>
 
 <span class="badge rounded-pill bg-danger" style="font-size: 14px; vertical-align: middle;">Advanced</span>
 
@@ -1491,6 +1527,8 @@ For instance, in the case of same-day <span style="color:#7725fa">events</span>,
 FreelanceBuddy will intelligently use this date as both the start and end date, _eliminating the need for redundant input_ in the `e/` field.
 
 This feature hopes to **enhance efficiency** and **simplify the <span style="color:#7725fa">event</span> creation** process, creating a more **user-friendly** experience for you.
+
+<div style="page-break-after: always;"></div>
 
 Here is a list of all Date-time Combination Assumptions:
 
@@ -1517,7 +1555,9 @@ Relevant for:
 
 You might want to consider the assumptions made for either `<DATE>` or `<TIME>` if either is left blank.
 
-##### Assumptions when using Date-time Instance
+[Back to Date-time Contents](#contents-of-this-section)
+
+##### <span style="color:#f79400">Assumptions when using Date-time Instance</span>
 
 |      Input      | Assumptions                                      |
 |:---------------:|--------------------------------------------------|
@@ -1527,7 +1567,6 @@ You might want to consider the assumptions made for either `<DATE>` or `<TIME>` 
 
 [Back to Date-time Contents](#contents-of-this-section)
 
-<div style="page-break-after: always;"></div>
 
 #### Editing `START_TIME` `END_TIME` in Events
 
@@ -1537,61 +1576,74 @@ You might want to consider the assumptions made for either `<DATE>` or `<TIME>` 
 
 When editing <span style="color:#7725fa">events</span> `START_TIME` `END_TIME` you may encounter the issue where keying in a valid `<DATE> <TIME>` is blocked.
 
-An example (Assume current date is 12-11-2023 and the time is 5pm):
+<div style="page-break-after: always;"></div>
+
+An example (Assume current datetime is 12-11-2023 5pm):
 
 ![editError](images/editTimeError.png =800x)
 
-Even if the start time *appears* to be before the stored end time.
+Even if the `START_TIME` *appears* to be before the stored `END_TIME`.
 
-**Problem**
+<box type="important">
 
-1. **Reason for such an error message** is because the `s/` ==input is assumed to be for the next day==.
+Problem
+</box>
+
+1. **Reason for such an error message** is because it converts to the ==next possible datetime after now()==.
+<br> See [Date-time Combinations Assumptions](#assumptions-when-using-date-time-combinations) for more details.
+<br><br>Going back to our example:
+<br>Given that today is 12-11-2023 and the time is 5pm, you enter `edit 1 s/3pm`.<br>
+<table>
+<tr>
+<td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</td>
+<td>
+<box>
 
 ****BEFORE EDITING****
-<box seamless>
 
 1. Sample Event
 
    Start: 12-11-2023 16:00 </br> End: 12-11-2023 18:00
 
   </box>
+</td>
+<td>
+---<code>edit 3 s/3pm</code>---> 
+</td>
 
-Current date time: 12-11-2023 17:00, and you enter `edit 1 s/3pm`.
+<td>
 
-This will register the start time to **tomorrow** (13-11-2023 15:00) instead of today (12-11-2023 15:00).
-
-<div style="page-break-after: always;"></div>
+<box>
 
 ****AFTER EDITING****
-<box seamless>
 
 1. Sample Event
 
-   <p style="color:Red">Start: 13-11-2023 15:00</p> End: 12-11-2023 18:00
-
-Note that now start date time is **LATER** than end date time, which is clearly not allowed.
+   <span style="color:Red">Start: 13-11-2023 15:00</span> </br> End: 12-11-2023 18:00
 </box>
+</td>
+</tr>
+</table>
 
-2. **Potentially dangerous** if event has an end time that is after the determined date-time input. The edit will be allowed and the <span style="color:#7725fa">event</span> might have an invalid start time unintentionally.
+&nbsp; &nbsp; &nbsp; As shown above, the app registers "3pm" to <b>tomorrow</b> 3pm instead of today 3pm.
 
-The problem extends beyond this specific example and can happen when modifying `END_TIME` only as well.
+&nbsp; &nbsp; &nbsp; Now the start datetime is <b>LATER</b> than end datetime, which is clearly not allowed.
+
+
+2. **Potentially dangerous** as you might not enter the date that you expected. 
+<br>The problem extends beyond this specific example and can happen when modifying `END_TIME` only as well.
+
+<div style="page-break-after: always;"></div>
+
+<box type = "success">
 
 **Solution**
+</box>
 
-1. Specify today's date explicitly (i.e. `s/13-11-2023 3pm ` instead of `s/3pm`)
+Specify today's date explicitly (i.e. `s/13-11-2023 3pm` instead of `s/3pm`)
 
-
-**Explanation**
-
-When modifying only one input, FreelanceBuddy will assume the other unmodified value to be the `<DATE> <TIME>` as shown by the UI. For the example above, the modified `START_TIME` `END_TIME` input is read as such:
-
-```
-s/<modified_TIME> e/<modified_DATE> <unmodified_TIME>
-```
-
-Using the [Date-time Combinations Assumptions](#assumptions-when-using-date-time-combinations) the `START_TIME` will be determined to be for 13-11-2023 3pm. Hence, FreelanceBuddy blocks the modification.
-
-Hence, it is important to understand that when modifying either `START_TIME` or `END_TIME`, the new input will be parsed with other unmodified `<DATE> <TIME>` value, with the assumptions described [here](#assumptions-when-using-date-time-combinations)
 
 ****A GOOD PRACTICE :white_check_mark:****
 
@@ -1622,6 +1674,8 @@ Commands that applies to ALL tabs
 | [<p style="color:black">**Exit**</p>](#exiting-the-program-exit)    | `exit`                                                    |
 | [<p style="color:black">**Clear**</p>](#clearing-all-entries-clear) | `clear`                                                   |
 
+[↑ Back to Table of Contents](#table-of-contents)
+
 <div style="page-break-after: always;"></div>
 
 ### <span style="color:#a30039">Contacts Tab</span>
@@ -1635,20 +1689,24 @@ Commands that applies to ALL tabs
 | [<p style="color:black">**Filter by Name**</p>](#filtering-contacts-by-name-contacts-tab-filter-n)       | `filter-n KEYWORD [MORE_KEYWORDS]…​` <br> e.g., `filter-n David Li`                                                          |
 | [<p style="color:black">**Filter by Company**</p>](#filtering-contacts-by-company-contacts-tab-filter-c) | `filter-c KEYWORD [MORE_KEYWORDS]…​` <br> e.g., `filter-c Google`                                                            |
 
+[↑ Back to Table of Contents](#table-of-contents)
+
 <div style="page-break-after: always;"></div>
 
 ### <span style="color:#02bd5c">Finance Tab</span>
 
-| Action                                                                                                         | Format, Examples                                                                                                                |
-|----------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
-| [<p style="color:black">**List**</p>](#listing-finances-finance-tab-list)                                      | `list [TYPE]`<br> e.g., `list commission`                                                                                       |
-| [<p style="color:black">**Add Commission**</p>](#adding-a-commission-finance-tab-add-c)                        | `add-c d/DESCRIPTION a/AMOUNT c/CLIENT [t/TIME]` <br> e.g., `add-c n/Betsy Crower a/800 d/UI design for NinjaVan t/tmr`         |
-| [<p style="color:black">**Add Expense**</p>](#adding-an-expense-finance-tab-add-e)                             | `add-e d/DESCRIPTION a/AMOUNT [c/CLIENT] [t/TIME]` <br> e.g., `add-e n/Betsy Crower a/100 d/Adobe Photoshop subscription t/now` |
-| [<p style="color:black">**Edit**</p>](#editing-a-finance-finance-tab-edit)                                     | `edit INDEX [d/DESCRIPTION] [a/AMOUNT] [c/CLIENT] [t/TIME]` <br/> e.g., `edit 1 d/Photoshop subscription a/300`                 |
-| [<p style="color:black">**Delete**</p>](#deleting-a-finance-entry-finance-tab-delete)                          | `delete INDEX`<br> e.g., `delete 3`             |
-| [<p style="color:black">**Filter by Client Name**</p>](#filtering-finances-by-client-finance-tab-filter-c)     | `filter-c KEYWORD`<br> e.g., `filter-c John`             |
-| [<p style="color:black">**Filter by Time Frame**</p>](#filtering-finances-by-time-frame-finance-tab-filter-t)  | `filter-t s/START_TIME e/END_TIME`<br> e.g., `filter-t s/tdy e/next week`               |
-| [<p style="color:black">**Summary**</p>](#generating-a-finance-summary-of-a-client-finance-tab-summary)        | `summary CLIENT`<br> e.g., `summary John Doe`          |
+| Action                                                                                                                             | Format, Examples                                                                                                                |
+|------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| [<p style="color:black">**List**</p>](#listing-finances-finance-tab-list)                                                          | `list [TYPE]`<br> e.g., `list commission`                                                                                       |
+| [<span style="color:black">**Add**</span> <span style="color:green">**Commission**</span>](#adding-a-commission-finance-tab-add-c) | `add-c d/DESCRIPTION a/AMOUNT c/CLIENT [t/TIME]` <br> e.g., `add-c n/Betsy Crower a/800 d/UI design for NinjaVan t/tmr`         |
+| [<span style="color:black">**Add**</span> <span style="color:red">**Expense**</span>](#adding-an-expense-finance-tab-add-e)        | `add-e d/DESCRIPTION a/AMOUNT [c/CLIENT] [t/TIME]` <br> e.g., `add-e n/Betsy Crower a/100 d/Adobe Photoshop subscription t/now` |
+| [<p style="color:black">**Edit**</p>](#editing-a-finance-finance-tab-edit)                                                         | `edit INDEX [d/DESCRIPTION] [a/AMOUNT] [c/CLIENT] [t/TIME]` <br/> e.g., `edit 1 d/Photoshop subscription a/300`                 |
+| [<p style="color:black">**Delete**</p>](#deleting-a-finance-entry-finance-tab-delete)                                              | `delete INDEX`<br> e.g., `delete 3`             |
+| [<p style="color:black">**Filter by Client Name**</p>](#filtering-finances-by-client-finance-tab-filter-c)                         | `filter-c KEYWORD`<br> e.g., `filter-c John`             |
+| [<p style="color:black">**Filter by Time Frame**</p>](#filtering-finances-by-time-frame-finance-tab-filter-t)                      | `filter-t s/START_TIME e/END_TIME`<br> e.g., `filter-t s/tdy e/next week`               |
+| [<p style="color:black">**Summary**</p>](#generating-a-finance-summary-of-a-client-finance-tab-summary)                            | `summary CLIENT`<br> e.g., `summary John Doe`          |
+
+[↑ Back to Table of Contents](#table-of-contents)
 
 <div style="page-break-after: always;"></div>
 
